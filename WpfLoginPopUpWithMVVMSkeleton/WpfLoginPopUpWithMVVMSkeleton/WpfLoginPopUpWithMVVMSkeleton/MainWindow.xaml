@@ -1,0 +1,47 @@
+﻿<Window x:Class="WpfLoginPopUpWithMVVMSkeleton.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:WpfLoginPopUpWithMVVMSkeleton.ViewModels"
+        mc:Ignorable="d"
+        Title="WpfLoginPopUpWithMVVMSkeleton" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+    <Grid Margin="15,15,15,15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ToggleButton x:Name="mainLoginBut" Grid.Column="3" Visibility="{Binding SignButViso}"  Grid.Row="3" Height="30"  Background="White" Content="Sign In" Command="{Binding LoginCommand}"/>
+        <StackPanel Grid.Column="0" Grid.Row="0"  >
+            <Popup x:Name="PopUp"  IsOpen="{Binding PopupStatus}" PopupAnimation="Slide"  AllowsTransparency="True">
+                <Canvas Width="755" Height="325" Background="Beige">
+                    <TextBox x:Name="userNameTextBox" Margin="270,100,50,50" Width="200" Height="30" FontSize="15" FontWeight="UltraLight" FontStyle="Normal"/>
+                    <PasswordBox x:Name="passwordTextBox" Margin="270,150,50,50" Width="200" Height="30" FontSize="16" PasswordChar="*" FontWeight="Heavy"/>
+                    <Button x:Name="loginBut" Margin="297,250,50,50" Width="150" Height="30" Background="White" Content="Login" Command="{Binding signCommand}"/>
+                    <Canvas.Effect>
+                        <DropShadowEffect/>
+                    </Canvas.Effect>
+                </Canvas>
+            </Popup>
+        </StackPanel>
+        <TextBlock Grid.RowSpan="8" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0" Background="White"  Visibility="{Binding AfterLoginButtonsStatus}" Text="End of Skeleton"/>
+    </Grid>
+</Window>
